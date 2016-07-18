@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour {
-    
-	
-	// Update is called once per frame
-	
-        public Rigidbody rb;
-        public float speed;
-        public bool[] CubeOrder = new bool[10];
+public class PlayerController : MonoBehaviour
+{
 
-        void Start()
+
+    // Update is called once per frame
+
+    public Rigidbody rb;
+    public float speed;
+    public bool[] CubeOrder = new bool[10];
+
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
-        for (int i=0;i < CubeOrder.Length;i++)
+        for (int i = 0; i < CubeOrder.Length; i++)
         {
             CubeOrder[i] = false;
         }
@@ -27,21 +29,21 @@ public class PlayerController : MonoBehaviour {
 
         Vector3 force = new Vector3(moveHorizontal, 0, moveVertical);
 
-        rb.AddForce(force*speed);
+        rb.AddForce(force * speed);
 
-    } 
+    }
 
     bool checkBoxOrder(int index)
     {
-        bool inOrder = true;  
-        
+        bool inOrder = true;
+
         if (index == 1)
         {
             return inOrder;
         }
 
         int i;
-        for (i=0; i< index;i++)
+        for (i = 0; i < index; i++)
         {
             if (CubeOrder[i] == false)
             {
@@ -57,7 +59,7 @@ public class PlayerController : MonoBehaviour {
         {
             return false;
         }
-        
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -69,14 +71,22 @@ public class PlayerController : MonoBehaviour {
                 other.gameObject.SetActive(false);
                 CubeOrder[0] = true;
             }
+            else
+            {
+                Start();
+            }
         }
-    
+
         if (other.gameObject.CompareTag("Cube2"))
         {
             if (checkBoxOrder(2))
             {
                 other.gameObject.SetActive(false);
                 CubeOrder[1] = true;
+            }
+            else
+            {
+                SceneManager.LoadScene("minigame");
             }
         }
         if (other.gameObject.CompareTag("Cube3"))
@@ -86,6 +96,11 @@ public class PlayerController : MonoBehaviour {
                 other.gameObject.SetActive(false);
                 CubeOrder[2] = true;
             }
+            else
+            {
+                SceneManager.LoadScene("minigame");
+
+            }
         }
         if (other.gameObject.CompareTag("Cube4"))
         {
@@ -93,6 +108,11 @@ public class PlayerController : MonoBehaviour {
             {
                 other.gameObject.SetActive(false);
                 CubeOrder[3] = true;
+            }
+            else
+            {
+                SceneManager.LoadScene("minigame");
+
             }
         }
         if (other.gameObject.CompareTag("Cube5"))
@@ -102,6 +122,11 @@ public class PlayerController : MonoBehaviour {
                 other.gameObject.SetActive(false);
                 CubeOrder[4] = true;
             }
+            else
+            {
+                SceneManager.LoadScene("minigame");
+
+            }
         }
         if (other.gameObject.CompareTag("Cube6"))
         {
@@ -109,6 +134,11 @@ public class PlayerController : MonoBehaviour {
             {
                 other.gameObject.SetActive(false);
                 CubeOrder[5] = true;
+            }
+            else
+            {
+                SceneManager.LoadScene("minigame");
+
             }
         }
         if (other.gameObject.CompareTag("Cube7"))
@@ -118,6 +148,11 @@ public class PlayerController : MonoBehaviour {
                 other.gameObject.SetActive(false);
                 CubeOrder[6] = true;
             }
+            else
+            {
+                SceneManager.LoadScene("minigame");
+
+            }
         }
         if (other.gameObject.CompareTag("Cube8"))
         {
@@ -125,6 +160,11 @@ public class PlayerController : MonoBehaviour {
             {
                 other.gameObject.SetActive(false);
                 CubeOrder[7] = true;
+            }
+            else
+            {
+                SceneManager.LoadScene("minigame");
+
             }
         }
         if (other.gameObject.CompareTag("Cube9"))
@@ -134,6 +174,11 @@ public class PlayerController : MonoBehaviour {
                 other.gameObject.SetActive(false);
                 CubeOrder[8] = true;
             }
+            else
+            {
+                SceneManager.LoadScene("minigame");
+
+            }
         }
         if (other.gameObject.CompareTag("Cube10"))
         {
@@ -142,7 +187,12 @@ public class PlayerController : MonoBehaviour {
                 other.gameObject.SetActive(false);
                 CubeOrder[9] = true;
             }
+            else
+            {
+                SceneManager.LoadScene("minigame");
+
+            }
         }
     }
-	
+
 }
